@@ -11,6 +11,7 @@ public class ChestMovement : MonoBehaviour
     private float rightBound;
     [SerializeField] private float swerveSpeed = 0.5f;
     [SerializeField] private float maxSwervveAmount = 1f;
+
     private void Awake()
     {
         leftBound = LeftBound.transform.position.x;
@@ -26,7 +27,7 @@ public class ChestMovement : MonoBehaviour
     {
         float swerveAmount = -swerveInput.MoveFactorX * Time.deltaTime * swerveSpeed;
         swerveAmount = Mathf.Clamp(swerveAmount, -maxSwervveAmount, maxSwervveAmount);
-        transform.Translate(new Vector3(swerveAmount, 0, 0));
+        transform.Translate(new Vector3(swerveAmount, 0, Vector3.back.z * 5 *Time.deltaTime));
         if (transform.position.x <= LeftBound.transform.position.x+0.65f)
         {
             transform.position = new Vector3(leftBound+0.65f, transform.position.y, transform.position.z);
