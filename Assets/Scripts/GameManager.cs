@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float distance;
     public List<Transform> coins = new List<Transform>();
     public static GameManager instance;
-    [SerializeField] private GameObject newCoin;
+    [SerializeField] public GameObject newCoin;
+    
     void Start()
     {
         instance = this;
@@ -60,26 +61,37 @@ public class GameManager : MonoBehaviour
                 if(coins.ElementAt(coins.Count -1).position.y == 0)
                 {
                     GameObject Coin = Instantiate(newCoin, coins.ElementAt(coins.Count - 1).position + new Vector3(0, 0.884f, 2f), Quaternion.identity);
-                    Coin.transform.parent = null;
-                    Coin.gameObject.AddComponent<Rigidbody>().isKinematic = true;
-                    Coin.gameObject.AddComponent<StackManager>();
-                    Coin.gameObject.GetComponent<Collider>().isTrigger = true;
-                    Coin.tag = gameObject.tag;
+                    other.transform.parent = null;
+                    other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    other.gameObject.AddComponent<StackManager>();
+                    other.gameObject.GetComponent<Collider>().isTrigger = true;
+                    other.tag = gameObject.tag;
                     coins.Add(Coin.transform);
                 }
                 else
                 {
                     GameObject Coin = Instantiate(newCoin, coins.ElementAt(coins.Count - 1).position + new Vector3(0,0, 2f), Quaternion.identity);
-                    Coin.transform.parent = null;
-                    Coin.gameObject.AddComponent<Rigidbody>().isKinematic = true;
-                    Coin.gameObject.AddComponent<StackManager>();
-                    Coin.gameObject.GetComponent<Collider>().isTrigger = true;
-                    Coin.tag = gameObject.tag;
+                    other.transform.parent = null;
+                    other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    other.gameObject.AddComponent<StackManager>();
+                    other.gameObject.GetComponent<Collider>().isTrigger = true;
+                    other.tag = gameObject.tag;
                     coins.Add(Coin.transform);
                 }
               
                 
             }
+        }
+        if (other.CompareTag("SubsGate") && coins.Count > 0)
+        {
+            coins.ElementAt(coins.Count - 1).gameObject.SetActive(false);
+            coins.RemoveAt(coins.Count - 1);
+         
+        }
+        if(coins.Count == 0)
+        {
+            //Gameover screen
+            
         }
     }
 }
