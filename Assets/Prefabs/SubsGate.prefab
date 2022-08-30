@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2693953745411299269}
   - component: {fileID: 1354742626701400160}
   - component: {fileID: 3830861737789041834}
-  - component: {fileID: -3696922995125827591}
   m_Layer: 0
   m_Name: SubsGate
   m_TagString: Untagged
@@ -83,19 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3696922995125827591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3326198613568294271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d94ce5279776d0428b59501d0e4b2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isUsed: 0
 --- !u!1 &7277886483490881964
 GameObject:
   m_ObjectHideFlags: 0
