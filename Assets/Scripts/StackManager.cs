@@ -51,15 +51,19 @@ public class StackManager : MonoBehaviour
         }
         if (other.CompareTag("SubsGate"))
         {
-           var SubNumber = Int32.Parse(other.transform.GetChild(0).name);
-            if(GameManager.instance.coins.Count > SubNumber)
+            StopAllCoroutines();
+            var SubNumber = Int32.Parse(other.transform.GetChild(0).name);
+            if(GameManager.instance.coins.Count > SubNumber && GameManager.instance.isSubstracted == false)
             {
                 for (int i = 0; i < SubNumber; i++)
                 {
                     GameManager.instance.coins.ElementAt(GameManager.instance.coins.Count - 1).gameObject.SetActive(false);
                     GameManager.instance.coins.RemoveAt(GameManager.instance.coins.Count - 1);
                 }
-                
+                GameManager.instance.isSubstracted = true;
+                Invoke("SetIsSubstractedFalse", 2f);
+
+
             }
            
         }
@@ -70,4 +74,8 @@ public class StackManager : MonoBehaviour
         }
     }
 
+    public void SetIsSubstractedFalse()
+    {
+        GameManager.instance.isSubstracted  = false;
+    }
 }

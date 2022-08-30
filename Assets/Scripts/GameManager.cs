@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public List<Transform> coins = new List<Transform>();
     public static GameManager instance;
     [SerializeField] public GameObject newCoin;
+    public bool isSubstracted = false;
     
     void Start()
     {
@@ -82,10 +83,12 @@ public class GameManager : MonoBehaviour
                 
             }
         }
-        if (other.CompareTag("SubsGate") && coins.Count > 0)
+        if (other.CompareTag("SubsGate") && coins.Count > 0 && isSubstracted == false)
         {
             coins.ElementAt(coins.Count - 1).gameObject.SetActive(false);
             coins.RemoveAt(coins.Count - 1);
+            isSubstracted = true;
+            Invoke("SetIsSubstractedFalse",2f);
          
         }
         if(coins.Count == 0)
@@ -93,5 +96,9 @@ public class GameManager : MonoBehaviour
             //Gameover screen
             
         }
+    }
+    public void SetIsSubstractedFalse()
+    {
+        isSubstracted = false;
     }
 }
