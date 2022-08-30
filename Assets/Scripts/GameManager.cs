@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private float distance;
     public List<Transform> coins = new List<Transform>();
+    public static GameManager instance;
+    [SerializeField] private GameObject newCoin;
     void Start()
     {
+        instance = this;
         coins.Add(gameObject.transform);//Chest will be the first coin in list
     }
 
@@ -41,9 +45,41 @@ public class GameManager : MonoBehaviour
         {
             other.transform.parent = null;
             other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+            other.gameObject.AddComponent<StackManager>();
             other.gameObject.GetComponent<Collider>().isTrigger = true;
             other.tag = gameObject.tag;
             coins.Add(other.transform);
+        }
+        if(other.CompareTag("AddGate"))
+        {
+            
+            var AddNumber = Int32.Parse(other.transform.GetChild(0).name);
+            Debug.Log(AddNumber);
+            for (int i = 0; i < AddNumber; i++)
+            {
+                if(coins.ElementAt(coins.Count -1).position.y == 0)
+                {
+                    GameObject Coin = Instantiate(newCoin, coins.ElementAt(coins.Count - 1).position + new Vector3(0, 0.884f, 2f), Quaternion.identity);
+                    Coin.transform.parent = null;
+                    Coin.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    Coin.gameObject.AddComponent<StackManager>();
+                    Coin.gameObject.GetComponent<Collider>().isTrigger = true;
+                    Coin.tag = gameObject.tag;
+                    coins.Add(Coin.transform);
+                }
+                else
+                {
+                    GameObject Coin = Instantiate(newCoin, coins.ElementAt(coins.Count - 1).position + new Vector3(0,0, 2f), Quaternion.identity);
+                    Coin.transform.parent = null;
+                    Coin.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    Coin.gameObject.AddComponent<StackManager>();
+                    Coin.gameObject.GetComponent<Collider>().isTrigger = true;
+                    Coin.tag = gameObject.tag;
+                    coins.Add(Coin.transform);
+                }
+              
+                
+            }
         }
     }
 }
