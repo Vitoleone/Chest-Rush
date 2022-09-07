@@ -14,6 +14,10 @@ public class PlaneMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        if(GameManager.instance.hasGameStarted)
+        {
+            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        }
+        
     }
 }

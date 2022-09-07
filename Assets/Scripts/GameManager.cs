@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [SerializeField] public GameObject newCoin;
     public bool isSubstracted = false;
-    
+    public bool hasGameStarted = false;
+
     void Start()
     {
         instance = this;
