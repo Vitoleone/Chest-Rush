@@ -765,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 3
   coins: []
+  coinsText: {fileID: 210753539}
   newCoin: {fileID: 9094801898332380376, guid: 0ae4b71be2f588e418b79e11e478e3f4, type: 3}
   isSubstracted: 0
   hasGameStarted: 0
@@ -1378,8 +1379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8862d2daa4386a44ab27a005be017610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TapToPlay: {fileID: 1219424774}
+  TapToPlay: {fileID: 1219424772}
   HandImage: {fileID: 432366909}
+  Panel: {fileID: 1508116052}
+  TapLine: {fileID: 1353221943}
 --- !u!1 &1353221943
 GameObject:
   m_ObjectHideFlags: 0
