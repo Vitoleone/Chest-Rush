@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float distance;
     public List<Transform> coins = new List<Transform>();
+    public Text coinsText;
     public static GameManager instance;
     [SerializeField] public GameObject newCoin;
     public bool isSubstracted = false;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
+        coinsText.text = ((coins.Count-1)*50).ToString();
     }
     private void OnTriggerEnter(Collider other)
     {
