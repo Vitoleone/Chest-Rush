@@ -28,7 +28,7 @@ public class StackManager : MonoBehaviour
                 {
                     GameObject Coin = Instantiate(GameManager.instance.newCoin, GameManager.instance.coins.ElementAt(GameManager.instance.coins.Count - 1).position + new Vector3(0, 0.884f, 2f), Quaternion.identity);
                     Coin.transform.parent = null;
-                    Coin.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    
                     Coin.gameObject.AddComponent<StackManager>();
                     Coin.gameObject.GetComponent<Collider>().isTrigger = true;
                     Coin.tag = gameObject.tag;
@@ -38,7 +38,7 @@ public class StackManager : MonoBehaviour
                 {
                     GameObject Coin = Instantiate(GameManager.instance.newCoin, GameManager.instance.coins.ElementAt(GameManager.instance.coins.Count - 1).position + new Vector3(0, 0, 2f), Quaternion.identity);
                     Coin.transform.parent = null;
-                    Coin.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    
                     Coin.gameObject.AddComponent<StackManager>();
                     Coin.gameObject.GetComponent<Collider>().isTrigger = true;
                     Coin.tag = gameObject.tag;

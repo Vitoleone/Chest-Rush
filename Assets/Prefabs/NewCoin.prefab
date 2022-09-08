@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 9094801898330178076}
   - component: {fileID: 4403569793418382599}
   - component: {fileID: 3654689386765510944}
+  - component: {fileID: -2117402996942609850}
+  - component: {fileID: 7207479012510405707}
   m_Layer: 0
   m_Name: NewCoin
   m_TagString: Player
@@ -109,3 +111,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff445a29f0fc434aaae8e4dbb973e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2117402996942609850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094801898332380376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eebbe4a4e0824074fb1e59b0212e9b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSelled: 0
+--- !u!54 &7207479012510405707
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094801898332380376}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
