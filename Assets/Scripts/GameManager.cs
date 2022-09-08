@@ -15,10 +15,15 @@ public class GameManager : MonoBehaviour
     public bool isSubstracted = false;
     public bool hasGameStarted = false;
 
+    public int collectedCoins = 0;
+    public Transform goldIconTransform;
+    private Camera mainCamera;
+
     void Start()
     {
         instance = this;
         coins.Add(gameObject.transform);//Chest will be the first coin in list
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -43,7 +48,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        coinsText.text = ((coins.Count-1)*50).ToString();
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
                 {
                     GameObject Coin = Instantiate(newCoin, coins.ElementAt(coins.Count - 1).position + new Vector3(0, 0.884f, 2f), Quaternion.identity);
                     other.transform.parent = null;
-                    other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                    
                     other.gameObject.AddComponent<StackManager>();
                     other.gameObject.GetComponent<Collider>().isTrigger = true;
                     other.tag = gameObject.tag;
@@ -77,7 +82,7 @@ public class GameManager : MonoBehaviour
                 {
                     GameObject Coin = Instantiate(newCoin, coins.ElementAt(coins.Count - 1).position + new Vector3(0,0, 2f), Quaternion.identity);
                     other.transform.parent = null;
-                    other.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+                   
                     other.gameObject.AddComponent<StackManager>();
                     other.gameObject.GetComponent<Collider>().isTrigger = true;
                     other.tag = gameObject.tag;
@@ -104,5 +109,18 @@ public class GameManager : MonoBehaviour
     public void SetIsSubstractedFalse()
     {
         isSubstracted = false;
+    }
+    
+    public Vector3 GetIconPosition(Vector3 target)//Because of UI elements are another position different from game objects position we need to get screen related position of the gold icon
+    {
+        Vector3 uiPos = goldIconTransform.position;
+        uiPos.z = (target - mainCamera.transform.position).z;
+        Vector3 result =  mainCamera.ScreenToWorldPoint(uiPos);
+        return result;
+    }
+    public void AddCoin(int value)
+    {
+        collectedCoins += value;
+        coinsText.text =  collectedCoins.ToString();
     }
 }
