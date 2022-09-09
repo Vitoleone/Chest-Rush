@@ -29,25 +29,29 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(coins.Count > 1)
+        if(hasGameStarted)
         {
-            for(int i = 1; i < coins.Count; i++)
+            if (coins.Count > 1)
             {
-                var FirstCoin = coins.ElementAt(i-1);
-                var SectCoin = coins.ElementAt(i);
-
-                var DesireDistance = -Vector3.Distance(SectCoin.position, FirstCoin.position);
-                Vector3 xDistance = new Vector3(Mathf.Lerp(SectCoin.position.x, FirstCoin.position.x, 8 * Time.deltaTime), 0, 0);
-                Vector3 zDistance = new Vector3(0, 0, Mathf.Lerp(SectCoin.position.z, FirstCoin.position.z + 2f, 5 * Time.deltaTime));
-                if(DesireDistance <= distance)
+                for (int i = 1; i < coins.Count; i++)
                 {
-                    
-                    SectCoin.position = new Vector3(xDistance.x
-                    , SectCoin.position.y, zDistance.z);
-                }
+                    var FirstCoin = coins.ElementAt(i - 1);
+                    var SectCoin = coins.ElementAt(i);
 
+                    var DesireDistance = -Vector3.Distance(SectCoin.position, FirstCoin.position);
+                    Vector3 xDistance = new Vector3(Mathf.Lerp(SectCoin.position.x, FirstCoin.position.x, 8 * Time.deltaTime), 0, 0);
+                    Vector3 zDistance = new Vector3(0, 0, Mathf.Lerp(SectCoin.position.z, FirstCoin.position.z + 2f, 5 * Time.deltaTime));
+                    if (DesireDistance <= distance)
+                    {
+
+                        SectCoin.position = new Vector3(xDistance.x
+                        , SectCoin.position.y, zDistance.z);
+                    }
+
+                }
             }
         }
+       
         
     }
     private void OnTriggerEnter(Collider other)

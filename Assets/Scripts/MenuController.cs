@@ -17,7 +17,7 @@ public class MenuController : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && TapToPlay.activeInHierarchy == true)
         {
             TapToPlay.SetActive(false);
             HandImage.SetActive(false);

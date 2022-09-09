@@ -10,19 +10,24 @@ public class SwerweInput : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(GameManager.instance.hasGameStarted)
         {
-            lastFingerPositionX = Input.mousePosition.x;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Girdi");
+                lastFingerPositionX = Input.mousePosition.x;
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                moveFactorX = Input.mousePosition.x - lastFingerPositionX;
+                lastFingerPositionX = Input.mousePosition.x;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                moveFactorX = 0;
+            }
         }
-        else if (Input.GetMouseButton(0))
-        {
-            moveFactorX = Input.mousePosition.x - lastFingerPositionX;
-            lastFingerPositionX = Input.mousePosition.x;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            moveFactorX = 0;
-        }
+       
 
 
     }

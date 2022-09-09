@@ -13,7 +13,7 @@ public class SellingCoins : MonoBehaviour
             Vector3 targetPos = GameManager.instance.GetIconPosition(transform.position);
             if (Vector2.Distance(transform.position, targetPos) > 2f)
             {
-                Debug.Log(Vector2.Distance(transform.position, targetPos));
+                
             }
             else
             {

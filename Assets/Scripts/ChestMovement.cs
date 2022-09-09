@@ -20,16 +20,13 @@ public class ChestMovement : MonoBehaviour
         
         swerveInput = GetComponent<SwerweInput>();
     }
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
-        float swerveAmount = swerveInput.MoveFactorX * Time.deltaTime * swerveSpeed;
-        swerveAmount = Mathf.Clamp(swerveAmount, -maxSwervveAmount, maxSwervveAmount);
+        
         if(GameManager.instance.hasGameStarted)
         {
+            float swerveAmount = swerveInput.MoveFactorX * Time.deltaTime * swerveSpeed;
+            swerveAmount = Mathf.Clamp(swerveAmount, -maxSwervveAmount, maxSwervveAmount);
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.Translate(new Vector3(swerveAmount, 0, Vector3.forward.z * 5 * Time.deltaTime));
             if (transform.position.x <= LeftBound.transform.position.x + 0.65f)
@@ -41,9 +38,6 @@ public class ChestMovement : MonoBehaviour
                 transform.position = new Vector3(rightBound - 0.65f, transform.position.y, transform.position.z);
             }
         }
-        
-
-
-
     }
+   
 }
